@@ -1,0 +1,11 @@
+{
+	"files": {
+		"includes": ["**", "!dist"]
+	},
+	"formatter": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true
+	}
+}
