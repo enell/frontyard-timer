@@ -36,3 +36,16 @@ All query param atoms are in `src/atoms` and filenames end with `.atom.ts`.
 - `npm run test` — run tests
 - `npm run typecheck` — TypeScript checks
 - `npm run build` — production build
+
+## GitHub Pages deployment
+
+This repository includes `.github/workflows/ci-pages.yml`.
+
+- On pull requests: runs lint, typecheck, tests, and build.
+- On pushes to `main`: runs CI and deploys `dist` to GitHub Pages.
+
+Deployment uses a Pages base path based on the repository name via `VITE_BASE_PATH`, so assets resolve correctly at `https://<owner>.github.io/<repo>/`.
+
+Repository setting required once:
+
+- **Settings → Pages → Build and deployment → Source**: set to **GitHub Actions**.
