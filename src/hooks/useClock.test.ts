@@ -1,20 +1,22 @@
-import { act, renderHook } from "@testing-library/react";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "bun:test";
+import { renderHook, waitFor } from "@testing-library/react";
 import { useClock } from "./useClock";
 
 describe("useClock", () => {
-	beforeEach(() => vi.useFakeTimers());
-	afterEach(() => vi.useRealTimers());
+  it("returns a Date", () => {
+    const { result } = renderHook(() => useClock());
+    expect(result.current).toBeInstanceOf(Date);
+  });
 
-	it("returns a Date", () => {
-		const { result } = renderHook(() => useClock());
-		expect(result.current).toBeInstanceOf(Date);
-	});
+  it("updates every second", async () => {
+    const { result } = renderHook(() => useClock());
+    const initial = result.current.getTime();
 
-	it("updates every second", () => {
-		const { result } = renderHook(() => useClock());
-		const initial = result.current.getTime();
-		act(() => vi.advanceTimersByTime(1000));
-		expect(result.current.getTime()).toBeGreaterThan(initial);
-	});
+    await waitFor(
+      () => {
+        expect(result.current.getTime()).not.toBe(initial);
+      },
+      { timeout: 2500 },
+    );
+  });
 });
