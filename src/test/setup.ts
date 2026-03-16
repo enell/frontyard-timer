@@ -6,5 +6,5 @@ import { cleanup } from "@testing-library/react";
 GlobalRegistrator.register();
 
 afterEach(() => {
-  cleanup();
+	cleanup();
 });
