@@ -13,6 +13,12 @@ export function formatHHMMSS(secs: number): string {
 	return `${h}:${pad2(m)}:${pad2(s)}`;
 }
 
+export function formatDDHH(secs: number): string {
+	const d = Math.floor(secs / 86400);
+	const h = Math.floor((secs % 86400) / 3600);
+	return `${d}d ${pad2(h)}h`;
+}
+
 export function formatTimestamp(ts: number): string {
 	const d = new Date(ts);
 	return `${pad2(d.getHours())}:${pad2(d.getMinutes())}:${pad2(d.getSeconds())}`;
