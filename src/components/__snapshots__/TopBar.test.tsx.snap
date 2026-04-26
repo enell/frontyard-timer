@@ -1,0 +1,3 @@
+// Bun Snapshot v1, https://bun.sh/docs/test/snapshots
+
+exports[`TopBar matches snapshot with a fixed date 1`] = `"<div class="flex items-center justify-between px-6 bg-neutral-900 border-b border-neutral-800 h-full" style="box-shadow: 0 1px 0 rgba(190,242,100,0.08);"><span class="font-black text-3xl tracking-widest text-lime-300 uppercase" style="text-shadow: 0 0 20px rgba(190,242,100,0.4);">Frontyard Ultra</span><span class="bg-lime-300 text-black font-black text-3xl px-8 py-1 tracking-widest rounded-sm" style="box-shadow: 0 0 20px rgba(190,242,100,0.5);">LAP 3</span><div class="text-right"><div class="font-mono font-bold text-3xl tracking-wider">10:30:45</div><div class="font-mono text-sm text-neutral-400 tracking-wide">Tor 1 jan</div></div></div>"`;
