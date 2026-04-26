@@ -10,7 +10,7 @@
 	"scripts": {
 		"dev": "bun run dev.ts",
 		"build": "bun run build:css && bun run build:js",
-		"build:css": "bunx tailwindcss -i ./src/index.css -o ./src/styles.css",
+		"build:css": "bunx @tailwindcss/cli -i ./src/index.css -o ./src/styles.css",
 		"build:js": "bun build --compile --target=browser ./index.html --outdir=dist",
 		"lint": "biome check .",
 		"lint:fix": "biome check --write .",
