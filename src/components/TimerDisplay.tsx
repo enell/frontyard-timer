@@ -64,12 +64,17 @@ export function TimerDisplay({ state, config }: TimerDisplayProps) {
 				"relative flex flex-col items-center justify-center bg-black overflow-hidden",
 				isAlarming && "animate-[alarm_0.5s_ease-in-out_infinite]",
 			)}
+			style={{
+				background: isAlarming
+					? undefined
+					: "radial-gradient(ellipse at center, rgba(190,242,100,0.04) 0%, transparent 70%)",
+			}}
 		>
 			{/* Pulse rings */}
 			{[0, 1, 2].map((i) => (
 				<div
 					key={i}
-					className="absolute rounded-full border border-lime-300/5 w-[65vh] h-[65vh]"
+					className="absolute rounded-full border border-lime-300/10 w-[65vh] h-[65vh]"
 					style={{ animation: `ringpulse 3s ease-in-out ${i}s infinite` }}
 				/>
 			))}
@@ -83,7 +88,15 @@ export function TimerDisplay({ state, config }: TimerDisplayProps) {
 					"font-black z-10 tabular-nums leading-none",
 					colorClass,
 				)}
-				style={{ fontSize: "clamp(5rem, 17vh, 16rem)" }}
+				style={{
+					fontSize: "clamp(5rem, 17vh, 16rem)",
+					textShadow:
+						phase !== "racing" || (state.secsLeft ?? 999) > 90
+							? "0 0 40px rgba(190,242,100,0.4), 0 0 80px rgba(190,242,100,0.15)"
+							: (state.secsLeft ?? 999) <= 30
+								? "0 0 30px rgba(239,68,68,0.6)"
+								: "0 0 30px rgba(251,146,60,0.5)",
+				}}
 			>
 				{digits}
 			</span>
@@ -100,13 +113,23 @@ export function TimerDisplay({ state, config }: TimerDisplayProps) {
 			)}
 
 			{/* Progress bar */}
-			<div className="absolute bottom-0 left-0 right-0 h-1.5 bg-neutral-800">
+			<div className="absolute bottom-0 left-0 right-0 h-2 bg-neutral-800/60">
 				<div
 					className={clsx(
 						"h-full transition-[width] duration-1000 ease-linear",
 						barColor,
 					)}
-					style={{ width: `${pct * 100}%` }}
+					style={{
+						width: `${pct * 100}%`,
+						boxShadow:
+							phase === "racing"
+								? (state.secsLeft ?? 999) <= 30
+									? "0 0 8px rgba(239,68,68,0.8)"
+									: (state.secsLeft ?? 999) <= 90
+										? "0 0 8px rgba(251,146,60,0.8)"
+										: "0 0 8px rgba(190,242,100,0.6)"
+								: "0 0 8px rgba(190,242,100,0.4)",
+					}}
 				/>
 			</div>
 		</div>

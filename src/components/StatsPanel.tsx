@@ -22,7 +22,7 @@ function StatBlock({
 			<span className={`font-black text-5xl leading-none ${valueClass}`}>
 				{value}
 			</span>
-			<span className="font-mono text-[0.65rem] text-neutral-500 mt-1">
+			<span className="font-mono text-[0.65rem] text-neutral-600 mt-1">
 				{sub}
 			</span>
 		</div>

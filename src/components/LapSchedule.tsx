@@ -29,8 +29,9 @@ export function LapSchedule({ config, state }: LapScheduleProps) {
 						<div
 							key={lap}
 							className={clsx(
-								"grid grid-cols-3 px-4 py-2 border-b border-neutral-800/60 items-center text-sm",
-								isNow && "bg-lime-300/5",
+								"grid grid-cols-3 px-4 py-2 border-b border-neutral-800/60 items-center text-sm transition-colors",
+								isNow && "bg-lime-300/8 border-l-2 border-l-lime-300",
+								!isNow && "border-l-2 border-l-transparent",
 								isPast && "opacity-25",
 							)}
 						>
@@ -41,7 +42,10 @@ export function LapSchedule({ config, state }: LapScheduleProps) {
 								)}
 							>
 								{isNow ? (
-									<span className="bg-lime-300 text-black px-1 text-[0.65rem]">
+									<span
+										className="bg-lime-300 text-black px-1.5 py-0.5 text-[0.65rem] font-bold rounded-sm"
+										style={{ boxShadow: "0 0 8px rgba(190,242,100,0.5)" }}
+									>
 										NU
 									</span>
 								) : (
