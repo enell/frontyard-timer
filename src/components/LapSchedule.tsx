@@ -1,6 +1,7 @@
 import { clsx } from "clsx";
-import { formatTimestampHHMM } from "../lib/format";
-import { buildLapSchedule, lapStartTs } from "../lib/race";
+import { useEffect, useRef } from "react";
+import { formatTempo } from "../lib/format";
+import { buildLapSchedule, maxLaps } from "../lib/race";
 import type { RaceConfig, RaceState } from "../types/race";
 
 interface LapScheduleProps {
@@ -9,68 +10,87 @@ interface LapScheduleProps {
 }
 
 export function LapSchedule({ config, state }: LapScheduleProps) {
-	const currentLap = state.phase === "racing" ? (state.currentLap ?? 1) : 1;
-	const fromLap = Math.max(1, currentLap - 1);
-	const laps = buildLapSchedule(config, fromLap + 10).filter(
-		(l) => l.lap >= fromLap,
-	);
+	const currentLap = state.phase === "racing" ? (state.currentLap ?? 1) : null;
+	const mx = maxLaps(config);
+	const laps = buildLapSchedule(config, mx);
+	const currentRowRef = useRef<HTMLTableRowElement>(null);
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: currentLap is the trigger for re-scrolling to the current row
+	useEffect(() => {
+		currentRowRef.current?.scrollIntoView({
+			behavior: "smooth",
+			block: "center",
+		});
+	}, [currentLap]);
 
 	return (
-		<div className="flex flex-col bg-neutral-900 border-r border-neutral-800 overflow-hidden">
-			<div className="px-4 py-2 bg-black border-b border-neutral-800 font-mono text-xs tracking-widest text-neutral-400">
-				{"// VARVSCHEMA"}
+		<div className="h-full flex flex-col bg-black border-r border-neutral-800 overflow-hidden">
+			<div className="px-3 py-2 border-b border-neutral-800 text-neutral-500 text-xs font-mono tracking-widest flex-shrink-0">
+				LAPS
 			</div>
-			<div className="flex-1 overflow-hidden flex flex-col">
-				{laps.map(({ lap, durationSecs }) => {
-					const isNow = state.phase === "racing" && lap === currentLap;
-					const isPast = lap < currentLap;
-					const startTs = lapStartTs(config, lap);
-					return (
-						<div
-							key={lap}
-							className={clsx(
-								"grid grid-cols-3 px-4 py-3 border-b border-neutral-800/60 items-center transition-colors",
-								isNow && "bg-lime-300/8 border-l-2 border-l-lime-300",
-								!isNow && "border-l-2 border-l-transparent",
-								isPast && "opacity-25",
-							)}
-						>
-							<span
-								className={clsx(
-									"font-mono text-sm font-bold",
-									isNow ? "text-lime-300" : "text-neutral-400",
-								)}
-							>
-								{isNow ? (
-									<span
-										className="bg-lime-300 text-black px-2 py-0.5 text-sm font-black rounded-sm"
-										style={{ boxShadow: "0 0 8px rgba(190,242,100,0.5)" }}
+			<div className="flex-1 overflow-y-auto">
+				<table className="w-full text-xs font-mono">
+					<thead className="sticky top-0 bg-black border-b border-neutral-800">
+						<tr>
+							<th className="text-left px-3 py-1 text-neutral-500 font-normal">
+								Lap
+							</th>
+							<th className="text-right px-3 py-1 text-neutral-500 font-normal">
+								Time
+							</th>
+							<th className="text-right px-3 py-1 text-neutral-500 font-normal">
+								Tempo
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						{laps.map(({ lap, durationSecs }) => {
+							const isNow = state.phase === "racing" && lap === currentLap;
+							const isPast =
+								(state.phase === "racing" &&
+									currentLap !== null &&
+									lap < currentLap) ||
+								state.phase === "done";
+							return (
+								<tr
+									key={lap}
+									ref={isNow ? currentRowRef : undefined}
+									className={clsx(
+										"border-b border-neutral-900",
+										isNow && "bg-white text-black",
+										isPast && !isNow && "opacity-30",
+									)}
+								>
+									<td
+										className={clsx(
+											"px-3 py-1.5 font-bold",
+											!isNow && "text-neutral-300",
+										)}
 									>
-										NU
-									</span>
-								) : (
-									`#${lap}`
-								)}
-							</span>
-							<span
-								className={clsx(
-									"font-black text-xl text-center",
-									isNow ? "text-lime-300" : "text-white",
-								)}
-							>
-								{Math.ceil(durationSecs / 60)} min
-							</span>
-							<span
-								className={clsx(
-									"font-mono text-sm font-bold text-right",
-									isNow ? "text-white" : "text-neutral-400",
-								)}
-							>
-								{formatTimestampHHMM(startTs)}
-							</span>
-						</div>
-					);
-				})}
+										{lap}
+									</td>
+									<td
+										className={clsx(
+											"px-3 py-1.5 text-right",
+											!isNow && "text-neutral-300",
+										)}
+									>
+										{Math.ceil(durationSecs / 60)} min
+									</td>
+									<td
+										className={clsx(
+											"px-3 py-1.5 text-right",
+											!isNow && "text-neutral-400",
+										)}
+									>
+										{formatTempo(durationSecs, config.distanceKm)}
+										<span className="ml-0.5 text-neutral-600">/km</span>
+									</td>
+								</tr>
+							);
+						})}
+					</tbody>
+				</table>
 			</div>
 		</div>
 	);
