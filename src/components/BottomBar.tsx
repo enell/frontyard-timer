@@ -1,5 +1,6 @@
-import { formatHHMMSS, pad2 } from "../lib/format";
-import { maxLaps } from "../lib/race";
+import { clsx } from "clsx";
+import { formatHHMMSS, formatTimestampHHMM, pad2 } from "../lib/format";
+import { lapDurationSecs, lapStartTs, maxLaps } from "../lib/race";
 import type { RaceConfig, RaceState } from "../types/race";
 
 interface BottomBarProps {
@@ -14,10 +15,19 @@ export function BottomBar({ config, state }: BottomBarProps) {
 	const done = state.lapsDone ?? 0;
 	const totalKm = (done * config.distanceKm).toFixed(1);
 	const elapsed = state.totalElapsedSecs ?? 0;
+	const isRacing = state.phase === "racing";
+
+	const raceEndTs = (() => {
+		const lastLapStart = lapStartTs(config, mx);
+		return lastLapStart + lapDurationSecs(config, mx) * 1000;
+	})();
 
 	return (
 		<div
-			className="grid grid-cols-3 bg-neutral-900 overflow-hidden"
+			className={clsx(
+				"grid grid-cols-3 bg-neutral-900 overflow-hidden transition-opacity duration-500",
+				isRacing && "opacity-40",
+			)}
 			style={{ boxShadow: "inset 0 1px 0 rgba(190,242,100,0.08)" }}
 		>
 			<div className="flex flex-col justify-center px-6 py-3 border-r border-neutral-800">
@@ -59,7 +69,7 @@ export function BottomBar({ config, state }: BottomBarProps) {
 					<span className="font-black text-6xl text-orange-400">{mx}</span>
 				</div>
 				<span className="font-mono text-sm text-neutral-500">
-					{totalKm} km totalt
+					{totalKm} km · slut {formatTimestampHHMM(raceEndTs)}
 				</span>
 			</div>
 		</div>

@@ -2,6 +2,7 @@ import { describe, expect, it } from "bun:test";
 import {
 	formatHHMMSS,
 	formatMMSS,
+	formatPaceMinKm,
 	formatTimestamp,
 	formatTimestampHHMM,
 	pad2,
@@ -38,4 +39,17 @@ describe("formatTimestampHHMM", () => {
 		const d = new Date(2026, 0, 1, 14, 22, 59);
 		expect(formatTimestampHHMM(d.getTime())).toBe("14:22");
 	});
+});
+
+describe("formatPaceMinKm", () => {
+	it("formats 30 min over 5 km as 6:00", () =>
+		expect(formatPaceMinKm(1800, 5)).toBe("6:00"));
+	it("formats 60 min over 8 km as 7:30", () =>
+		expect(formatPaceMinKm(3600, 8)).toBe("7:30"));
+	it("formats exact minutes correctly", () =>
+		expect(formatPaceMinKm(600, 1)).toBe("10:00"));
+	it("handles fractional seconds without decimals", () =>
+		expect(formatPaceMinKm(1000, 3)).toBe("5:33"));
+	it("returns placeholder for zero distance", () =>
+		expect(formatPaceMinKm(1800, 0)).toBe("--:--"));
 });

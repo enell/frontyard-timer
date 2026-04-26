@@ -38,7 +38,7 @@ describe("BottomBar", () => {
 		const { getByText } = render(
 			<BottomBar config={config} state={racingState} />,
 		);
-		expect(getByText(/6\.0 km totalt/)).toBeInTheDocument();
+		expect(getByText(/6\.0 km/)).toBeInTheDocument();
 	});
 
 	it("shows pre-race status when not started", () => {

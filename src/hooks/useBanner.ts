@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import type { RaceState } from "../types/race";
+import type { RaceConfig, RaceState } from "../types/race";
 
 export interface BannerState {
 	message: string;
 	visible: boolean;
 }
 
-function getBannerMessage(state: RaceState): string | null {
+function getBannerMessage(
+	state: RaceState,
+	config?: RaceConfig,
+): string | null {
 	if (state.phase === "pre") {
 		if (state.secsToStart === 300)
 			return "5 MINUTER TILL START — FÖRBERED DIG!";
@@ -15,8 +18,14 @@ function getBannerMessage(state: RaceState): string | null {
 	}
 	if (state.phase === "racing") {
 		const { secsLeft, lapDurationSecs, currentLap } = state;
-		if (secsLeft === (lapDurationSecs ?? 0) - 1)
-			return `VARV ${currentLap} STARTAR — LÖP!`;
+		if (secsLeft === (lapDurationSecs ?? 0) - 1) {
+			const lapsDone = (currentLap ?? 1) - 1;
+			const totalKm = config
+				? (lapsDone * config.distanceKm).toFixed(1).replace(".", ",")
+				: null;
+			const kmPart = totalKm ? ` — ${totalKm} KM KLARA` : "";
+			return `VARV ${currentLap} STARTAR — LÖP!${kmPart}`;
+		}
 		if (secsLeft === 120) return "2 MINUTER — GÖR DIG REDO!";
 		if (secsLeft === 60) return "1 MINUT — STÄLL DIG VID STARTLINJEN!";
 		if (secsLeft === 10) return "10 SEKUNDER — ALLA VID STARTEN!";
@@ -26,7 +35,11 @@ function getBannerMessage(state: RaceState): string | null {
 	return null;
 }
 
-export function useBanner(state: RaceState, durationMs = 4000): BannerState {
+export function useBanner(
+	state: RaceState,
+	durationMs = 4000,
+	config?: RaceConfig,
+): BannerState {
 	const [banner, setBanner] = useState<BannerState>({
 		message: "",
 		visible: false,
@@ -39,7 +52,7 @@ export function useBanner(state: RaceState, durationMs = 4000): BannerState {
 		if (key === lastKeyRef.current) return;
 		lastKeyRef.current = key;
 
-		const msg = getBannerMessage(state);
+		const msg = getBannerMessage(state, config);
 		if (!msg) return;
 
 		setBanner({ message: msg, visible: true });
@@ -48,7 +61,7 @@ export function useBanner(state: RaceState, durationMs = 4000): BannerState {
 			() => setBanner((b) => ({ ...b, visible: false })),
 			state.phase === "done" ? 15000 : durationMs,
 		);
-	}, [state, durationMs]);
+	}, [state, durationMs, config]);
 
 	useEffect(
 		() => () => {

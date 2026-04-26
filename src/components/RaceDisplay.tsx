@@ -13,7 +13,7 @@ export function RaceDisplay() {
 	const config = useRequiredRaceConfig();
 	const now = useClock();
 	const state = useRaceState(config);
-	const banner = useBanner(state);
+	const banner = useBanner(state, 4000, config);
 
 	const lapBadge = (() => {
 		if (state.phase === "pre") return "STARTAR SNART";
