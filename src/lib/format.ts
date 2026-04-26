@@ -27,6 +27,13 @@ export function formatWallClock(d: Date): string {
 	return `${pad2(d.getHours())}:${pad2(d.getMinutes())}:${pad2(d.getSeconds())}`;
 }
 
+export function formatTempo(durationSecs: number, distanceKm: number): string {
+	const secsPerKm = durationSecs / distanceKm;
+	const m = Math.floor(secsPerKm / 60);
+	const s = Math.round(secsPerKm % 60);
+	return `${m}:${pad2(s)}`;
+}
+
 export function formatWallDate(d: Date): string {
 	const days = ["Sön", "Mån", "Tis", "Ons", "Tor", "Fre", "Lör"];
 	const months = [
