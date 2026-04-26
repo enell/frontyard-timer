@@ -5,7 +5,6 @@ import { useRaceState } from "../hooks/useRaceState";
 import { Banner } from "./Banner";
 import { BottomBar } from "./BottomBar";
 import { LapSchedule } from "./LapSchedule";
-import { StatsPanel } from "./StatsPanel";
 import { TimerDisplay } from "./TimerDisplay";
 import { TopBar } from "./TopBar";
 
@@ -30,11 +29,10 @@ export function RaceDisplay() {
 			<TopBar now={now} lapBadge={lapBadge} />
 			<div
 				className="grid overflow-hidden"
-				style={{ gridTemplateColumns: "22vw 1fr 22vw" }}
+				style={{ gridTemplateColumns: "22vw 1fr" }}
 			>
 				<LapSchedule config={config} state={state} />
 				<TimerDisplay config={config} state={state} />
-				<StatsPanel config={config} state={state} />
 			</div>
 			<BottomBar config={config} state={state} />
 		</div>

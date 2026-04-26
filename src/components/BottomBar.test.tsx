@@ -26,19 +26,11 @@ describe("BottomBar", () => {
 		expect(getByText("10:00")).toBeInTheDocument();
 	});
 
-	it("shows laps done and max", () => {
+	it("shows elapsed time", () => {
 		const { getByText } = render(
 			<BottomBar config={config} state={racingState} />,
 		);
-		expect(getByText("2")).toBeInTheDocument();
-		expect(getByText("30")).toBeInTheDocument();
-	});
-
-	it("shows total km", () => {
-		const { getByText } = render(
-			<BottomBar config={config} state={racingState} />,
-		);
-		expect(getByText(/6\.0 km/)).toBeInTheDocument();
+		expect(getByText("0:59:00")).toBeInTheDocument();
 	});
 
 	it("shows pre-race status when not started", () => {
