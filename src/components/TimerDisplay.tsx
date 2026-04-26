@@ -3,6 +3,12 @@ import { formatDDHH, formatHHMMSS, formatMMSS } from "../lib/format";
 import { lapDurationSecs, maxLaps } from "../lib/race";
 import type { RaceConfig, RaceState } from "../types/race";
 
+const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const MONTH_NAMES = [
+	"Jan", "Feb", "Mar", "Apr", "May", "Jun",
+	"Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+];
+
 interface TimerDisplayProps {
 	state: RaceState;
 	config: RaceConfig;
@@ -19,12 +25,7 @@ export function TimerDisplay({ state, config }: TimerDisplayProps) {
 			const secsToStart = state.secsToStart ?? 0;
 			if (secsToStart >= 86400) {
 				const startDate = new Date(config.start);
-				const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-				const months = [
-					"Jan", "Feb", "Mar", "Apr", "May", "Jun",
-					"Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
-				];
-				return `STARTS ${days[startDate.getDay()]} ${startDate.getDate()} ${months[startDate.getMonth()]}`;
+				return `STARTS ${DAY_NAMES[startDate.getDay()]} ${startDate.getDate()} ${MONTH_NAMES[startDate.getMonth()]}`;
 			}
 			return "STARTING SOON";
 		}
