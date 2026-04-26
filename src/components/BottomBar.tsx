@@ -21,16 +21,16 @@ export function BottomBar({ config, state }: BottomBarProps) {
 			style={{ boxShadow: "inset 0 1px 0 rgba(190,242,100,0.08)" }}
 		>
 			<div className="flex flex-col justify-center px-6 py-3 border-r border-neutral-800">
-				<span className="font-mono text-xs tracking-widest text-neutral-500 uppercase">
+				<span className="font-mono text-sm tracking-widest text-neutral-400 uppercase">
 					Total löptid
 				</span>
 				<span
-					className="font-black text-5xl leading-none text-lime-300"
+					className="font-black text-6xl leading-none text-lime-300"
 					style={{ textShadow: "0 0 20px rgba(190,242,100,0.3)" }}
 				>
 					{formatHHMMSS(elapsed)}
 				</span>
-				<span className="font-mono text-xs text-neutral-600">
+				<span className="font-mono text-sm text-neutral-500">
 					{state.phase === "pre"
 						? "Loppet ej startat"
 						: state.phase === "done"
@@ -40,25 +40,25 @@ export function BottomBar({ config, state }: BottomBarProps) {
 			</div>
 
 			<div className="flex flex-col items-center justify-center border-r border-neutral-800 py-3">
-				<span className="font-mono text-xs tracking-widest text-neutral-500 uppercase">
+				<span className="font-mono text-sm tracking-widest text-neutral-400 uppercase">
 					Startskott
 				</span>
-				<span className="font-mono font-bold text-5xl">{startHHMM}</span>
-				<span className="font-mono text-xs text-neutral-600">
+				<span className="font-mono font-bold text-6xl">{startHHMM}</span>
+				<span className="font-mono text-sm text-neutral-500">
 					{config.distanceKm.toFixed(1).replace(".", ",")} km/varv
 				</span>
 			</div>
 
 			<div className="flex flex-col justify-center px-6 py-3">
-				<span className="font-mono text-xs tracking-widest text-neutral-500 uppercase">
+				<span className="font-mono text-sm tracking-widest text-neutral-400 uppercase">
 					Varv klara / max
 				</span>
 				<div className="flex items-baseline gap-2 leading-none">
-					<span className="font-black text-5xl text-green-400">{done}</span>
-					<span className="text-2xl text-neutral-600">/</span>
-					<span className="font-black text-5xl text-orange-400">{mx}</span>
+					<span className="font-black text-6xl text-green-400">{done}</span>
+					<span className="text-3xl text-neutral-500">/</span>
+					<span className="font-black text-6xl text-orange-400">{mx}</span>
 				</div>
-				<span className="font-mono text-xs text-neutral-600">
+				<span className="font-mono text-sm text-neutral-500">
 					{totalKm} km totalt
 				</span>
 			</div>

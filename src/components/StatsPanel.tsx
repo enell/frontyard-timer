@@ -16,15 +16,13 @@ function StatBlock({
 }: StatBlockProps) {
 	return (
 		<div className="flex-1 flex flex-col justify-center px-5 border-b border-neutral-800 last:border-b-0">
-			<span className="font-mono text-[0.65rem] tracking-widest text-neutral-500 uppercase mb-1">
+			<span className="font-mono text-xs tracking-widest text-neutral-400 uppercase mb-1">
 				{label}
 			</span>
-			<span className={`font-black text-5xl leading-none ${valueClass}`}>
+			<span className={`font-black text-6xl leading-none ${valueClass}`}>
 				{value}
 			</span>
-			<span className="font-mono text-[0.65rem] text-neutral-600 mt-1">
-				{sub}
-			</span>
+			<span className="font-mono text-xs text-neutral-500 mt-1">{sub}</span>
 		</div>
 	);
 }

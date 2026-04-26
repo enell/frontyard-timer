@@ -12,22 +12,22 @@ export function TopBar({ now, lapBadge }: TopBarProps) {
 			style={{ boxShadow: "0 1px 0 rgba(190,242,100,0.08)" }}
 		>
 			<span
-				className="font-black text-2xl tracking-widest text-lime-300 uppercase"
+				className="font-black text-3xl tracking-widest text-lime-300 uppercase"
 				style={{ textShadow: "0 0 20px rgba(190,242,100,0.4)" }}
 			>
 				Frontyard Ultra
 			</span>
 			<span
-				className="bg-lime-300 text-black font-mono font-bold text-lg px-6 py-1 tracking-widest rounded-sm"
-				style={{ boxShadow: "0 0 16px rgba(190,242,100,0.4)" }}
+				className="bg-lime-300 text-black font-black text-3xl px-8 py-1 tracking-widest rounded-sm"
+				style={{ boxShadow: "0 0 20px rgba(190,242,100,0.5)" }}
 			>
 				{lapBadge}
 			</span>
 			<div className="text-right">
-				<div className="font-mono text-xl tracking-wider">
+				<div className="font-mono font-bold text-3xl tracking-wider">
 					{formatWallClock(now)}
 				</div>
-				<div className="font-mono text-xs text-neutral-500 tracking-wide">
+				<div className="font-mono text-sm text-neutral-400 tracking-wide">
 					{formatWallDate(now)}
 				</div>
 			</div>

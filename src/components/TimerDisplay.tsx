@@ -79,7 +79,7 @@ export function TimerDisplay({ state, config }: TimerDisplayProps) {
 				/>
 			))}
 
-			<span className="font-mono text-xs tracking-[0.4em] text-neutral-500 uppercase z-10 mb-1">
+			<span className="font-mono text-sm tracking-[0.4em] text-neutral-400 uppercase z-10 mb-2">
 				{label}
 			</span>
 
@@ -89,7 +89,7 @@ export function TimerDisplay({ state, config }: TimerDisplayProps) {
 					colorClass,
 				)}
 				style={{
-					fontSize: "clamp(5rem, 17vh, 16rem)",
+					fontSize: "clamp(7rem, 24vh, 28rem)",
 					textShadow:
 						phase !== "racing" || (state.secsLeft ?? 999) > 90
 							? "0 0 40px rgba(190,242,100,0.4), 0 0 80px rgba(190,242,100,0.15)"
@@ -102,18 +102,18 @@ export function TimerDisplay({ state, config }: TimerDisplayProps) {
 			</span>
 
 			{nextStartTs && (
-				<div className="flex items-baseline gap-3 mt-4 z-10">
-					<span className="font-mono text-xs tracking-widest text-neutral-500">
+				<div className="flex items-baseline gap-3 mt-6 z-10">
+					<span className="font-mono text-sm tracking-widest text-neutral-400 uppercase">
 						NÄSTA START
 					</span>
-					<span className="font-mono text-3xl">
+					<span className="font-mono font-bold text-5xl">
 						{formatTimestamp(nextStartTs)}
 					</span>
 				</div>
 			)}
 
 			{/* Progress bar */}
-			<div className="absolute bottom-0 left-0 right-0 h-2 bg-neutral-800/60">
+			<div className="absolute bottom-0 left-0 right-0 h-3 bg-neutral-800/60">
 				<div
 					className={clsx(
 						"h-full transition-[width] duration-1000 ease-linear",
@@ -124,10 +124,10 @@ export function TimerDisplay({ state, config }: TimerDisplayProps) {
 						boxShadow:
 							phase === "racing"
 								? (state.secsLeft ?? 999) <= 30
-									? "0 0 8px rgba(239,68,68,0.8)"
+									? "0 0 10px rgba(239,68,68,0.9)"
 									: (state.secsLeft ?? 999) <= 90
-										? "0 0 8px rgba(251,146,60,0.8)"
-										: "0 0 8px rgba(190,242,100,0.6)"
+										? "0 0 10px rgba(251,146,60,0.9)"
+										: "0 0 10px rgba(190,242,100,0.7)"
 								: "0 0 8px rgba(190,242,100,0.4)",
 					}}
 				/>
