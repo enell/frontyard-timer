@@ -8,8 +8,8 @@
 	},
 	"type": "module",
 	"scripts": {
-		"dev": "bun build --target=browser ./index.html --outdir=dist --watch",
-		"build": "bun build --compile --target=browser ./index.html --outdir=dist",
+		"dev": "bun run build.ts --watch",
+		"build": "bun run build.ts",
 		"lint": "biome check .",
 		"lint:fix": "biome check --write .",
 		"format": "biome format --write .",
