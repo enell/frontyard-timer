@@ -24,7 +24,6 @@ export const setFirstAtom = atom(
 
 			return {
 				...prev,
-				pathname: "/",
 				searchParams,
 			};
 		});
