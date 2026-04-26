@@ -8,8 +8,10 @@
 	},
 	"type": "module",
 	"scripts": {
-		"dev": "bun build --target=browser ./index.html --outdir=dist --watch",
-		"build": "bun build --compile --target=browser ./index.html --outdir=dist",
+		"dev": "bun run dev.ts",
+		"build": "bun run build:css && bun run build:js",
+		"build:css": "bunx tailwindcss -i ./src/index.css -o ./src/styles.css",
+		"build:js": "bun build --compile --target=browser ./index.html --outdir=dist",
 		"lint": "biome check .",
 		"lint:fix": "biome check --write .",
 		"format": "biome format --write .",
@@ -37,7 +39,6 @@
 		"@types/node": "^25.3.5",
 		"@types/react": "^19.2.7",
 		"@types/react-dom": "^19.2.3",
-		"bun-plugin-tailwind": "^0.1.2",
 		"globals": "^17.4.0",
 		"typescript": "~5.9.3"
 	}
