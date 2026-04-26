@@ -22,7 +22,6 @@ export const setDistAtom = atom(null, (_get, set, dist: number | undefined) => {
 
 		return {
 			...prev,
-			pathname: "/",
 			searchParams,
 		};
 	});

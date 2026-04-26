@@ -15,7 +15,6 @@ export const setStartAtom = atom(
 
 			return {
 				...prev,
-				pathname: "/",
 				searchParams,
 			};
 		});

@@ -22,7 +22,6 @@ export const setDecAtom = atom(null, (_get, set, dec: number | undefined) => {
 
 		return {
 			...prev,
-			pathname: "/",
 			searchParams,
 		};
 	});
