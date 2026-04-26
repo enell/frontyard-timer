@@ -1,5 +1,6 @@
 import { describe, expect, it } from "bun:test";
 import {
+	formatDDHH,
 	formatHHMMSS,
 	formatMMSS,
 	formatTimestamp,
@@ -17,6 +18,17 @@ describe("formatMMSS", () => {
 	it("formats 0 as 00:00", () => expect(formatMMSS(0)).toBe("00:00"));
 	it("formats 90 as 01:30", () => expect(formatMMSS(90)).toBe("01:30"));
 	it("formats 3599 as 59:59", () => expect(formatMMSS(3599)).toBe("59:59"));
+});
+
+describe("formatDDHH", () => {
+	it("formats exactly 1 day as 1d 00h", () =>
+		expect(formatDDHH(86400)).toBe("1d 00h"));
+	it("formats 7 days as 7d 00h", () =>
+		expect(formatDDHH(7 * 86400)).toBe("7d 00h"));
+	it("formats 6d 23h correctly", () =>
+		expect(formatDDHH(6 * 86400 + 23 * 3600 + 59 * 60)).toBe("6d 23h"));
+	it("ignores sub-hour remainder", () =>
+		expect(formatDDHH(86400 + 3600 + 1800)).toBe("1d 01h"));
 });
 
 describe("formatHHMMSS", () => {

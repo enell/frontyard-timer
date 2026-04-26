@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import { formatHHMMSS, formatMMSS } from "../lib/format";
+import { formatDDHH, formatHHMMSS, formatMMSS } from "../lib/format";
 import { lapDurationSecs, maxLaps } from "../lib/race";
 import type { RaceConfig, RaceState } from "../types/race";
 
@@ -15,7 +15,19 @@ export function TimerDisplay({ state, config }: TimerDisplayProps) {
 	const isDone = phase === "done";
 
 	const lapLabel = (() => {
-		if (phase === "pre") return "STARTING SOON";
+		if (phase === "pre") {
+			const secsToStart = state.secsToStart ?? 0;
+			if (secsToStart >= 86400) {
+				const startDate = new Date(config.start);
+				const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+				const months = [
+					"Jan", "Feb", "Mar", "Apr", "May", "Jun",
+					"Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+				];
+				return `STARTS ${days[startDate.getDay()]} ${startDate.getDate()} ${months[startDate.getMonth()]}`;
+			}
+			return "STARTING SOON";
+		}
 		if (phase === "done") return "RACE DONE";
 		return `LAP ${state.currentLap}`;
 	})();
@@ -27,8 +39,11 @@ export function TimerDisplay({ state, config }: TimerDisplayProps) {
 	})();
 
 	const digits = (() => {
-		if (phase === "pre" && (state.secsToStart ?? 0) > 3600)
-			return formatHHMMSS(secsLeft);
+		if (phase === "pre") {
+			const s = state.secsToStart ?? 0;
+			if (s >= 86400) return formatDDHH(s);
+			if (s > 3600) return formatHHMMSS(s);
+		}
 		return formatMMSS(secsLeft);
 	})();
 
