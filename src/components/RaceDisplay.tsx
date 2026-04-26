@@ -24,7 +24,7 @@ export function RaceDisplay() {
 	return (
 		<div
 			className="w-screen h-screen overflow-hidden grid bg-black text-white"
-			style={{ gridTemplateRows: "8vh 60vh 1fr" }}
+			style={{ gridTemplateRows: "10vh 58vh 1fr" }}
 		>
 			<Banner message={banner.message} visible={banner.visible} />
 			<TopBar now={now} lapBadge={lapBadge} />
