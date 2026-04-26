@@ -1,6 +1,13 @@
 // Initial CSS build before starting watchers
 const cssBuild = Bun.spawn(
-	["bunx", "tailwindcss", "-i", "./src/index.css", "-o", "./src/styles.css"],
+	[
+		"bunx",
+		"@tailwindcss/cli",
+		"-i",
+		"./src/index.css",
+		"-o",
+		"./src/styles.css",
+	],
 	{ stdout: "inherit", stderr: "inherit" },
 );
 const cssExitCode = await cssBuild.exited;
@@ -10,7 +17,7 @@ if (cssExitCode !== 0) process.exit(cssExitCode);
 const cssWatcher = Bun.spawn(
 	[
 		"bunx",
-		"tailwindcss",
+		"@tailwindcss/cli",
 		"-i",
 		"./src/index.css",
 		"-o",
