@@ -98,18 +98,4 @@ describe("LapSchedule", () => {
 		);
 		expect(getByText("Tempo")).toBeInTheDocument();
 	});
-
-	it("matches snapshot for pre phase", () => {
-		const { container } = render(
-			<LapSchedule config={config} state={preState} />,
-		);
-		expect(container.innerHTML).toMatchSnapshot();
-	});
-
-	it("matches snapshot for racing phase", () => {
-		const { container } = render(
-			<LapSchedule config={config} state={racingState} />,
-		);
-		expect(container.innerHTML).toMatchSnapshot();
-	});
 });

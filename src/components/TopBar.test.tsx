@@ -32,11 +32,4 @@ describe("TopBar", () => {
 		);
 		expect(getByText(/1 jan/i)).toBeInTheDocument();
 	});
-
-	it("matches snapshot with a fixed date", () => {
-		const { container } = render(
-			<TopBar now={fixedDate} lapBadge="LAP 3" />,
-		);
-		expect(container.innerHTML).toMatchSnapshot();
-	});
 });

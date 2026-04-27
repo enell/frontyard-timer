@@ -59,18 +59,4 @@ describe("StatsPanel", () => {
 		expect(getByText("Varvtid")).toBeInTheDocument();
 		expect(getByText("Max varv")).toBeInTheDocument();
 	});
-
-	it("matches snapshot for pre phase", () => {
-		const { container } = render(
-			<StatsPanel config={config} state={preState} />,
-		);
-		expect(container.innerHTML).toMatchSnapshot();
-	});
-
-	it("matches snapshot for racing phase", () => {
-		const { container } = render(
-			<StatsPanel config={config} state={racingState} />,
-		);
-		expect(container.innerHTML).toMatchSnapshot();
-	});
 });

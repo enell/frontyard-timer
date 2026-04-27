@@ -1,0 +1,115 @@
+{
+  "version": "1.59.1",
+  "viteVersion": "6.4.2",
+  "registerSourceHash": "ea233d95b980072c81eb49458aee55f5d33fdb02",
+  "components": [
+    {
+      "id": "_home_runner_work_frontyard_timer_frontyard_timer_src_components_LapSchedule_LapSchedule",
+      "filename": "/home/runner/work/frontyard-timer/frontyard-timer/playwright/visual/LapSchedule.spec.tsx",
+      "importSource": "../../src/components/LapSchedule",
+      "remoteName": "LapSchedule"
+    },
+    {
+      "id": "_home_runner_work_frontyard_timer_frontyard_timer_src_components_StatsPanel_StatsPanel",
+      "filename": "/home/runner/work/frontyard-timer/frontyard-timer/playwright/visual/StatsPanel.spec.tsx",
+      "importSource": "../../src/components/StatsPanel",
+      "remoteName": "StatsPanel"
+    },
+    {
+      "id": "_home_runner_work_frontyard_timer_frontyard_timer_src_components_TimerDisplay_TimerDisplay",
+      "filename": "/home/runner/work/frontyard-timer/frontyard-timer/playwright/visual/TimerDisplay.spec.tsx",
+      "importSource": "../../src/components/TimerDisplay",
+      "remoteName": "TimerDisplay"
+    },
+    {
+      "id": "_home_runner_work_frontyard_timer_frontyard_timer_src_components_TopBar_TopBar",
+      "filename": "/home/runner/work/frontyard-timer/frontyard-timer/playwright/visual/TopBar.spec.tsx",
+      "importSource": "../../src/components/TopBar",
+      "remoteName": "TopBar"
+    }
+  ],
+  "sources": {
+    "/home/runner/work/frontyard-timer/frontyard-timer/playwright/index.html": {
+      "timestamp": 1777274390545.3953
+    },
+    "/home/runner/work/frontyard-timer/frontyard-timer/playwright/index.tsx": {
+      "timestamp": 1777274407915.2756
+    },
+    "/home/runner/work/frontyard-timer/frontyard-timer/node_modules/react/index.js": {
+      "timestamp": 1777273677699.339
+    },
+    "/home/runner/work/frontyard-timer/frontyard-timer/node_modules/react-dom/client.js": {
+      "timestamp": 1777273677464.3408
+    },
+    "/home/runner/work/frontyard-timer/frontyard-timer/node_modules/react/cjs/react.production.js": {
+      "timestamp": 1777273677700.339
+    },
+    "/home/runner/work/frontyard-timer/frontyard-timer/src/index.css": {
+      "timestamp": 1777273462264.8376
+    },
+    "/home/runner/work/frontyard-timer/frontyard-timer/node_modules/react-dom/cjs/react-dom-client.production.js": {
+      "timestamp": 1777273677466.3408
+    },
+    "/home/runner/work/frontyard-timer/frontyard-timer/src/components/StatsPanel.tsx": {
+      "timestamp": 1777273462264.358
+    },
+    "/home/runner/work/frontyard-timer/frontyard-timer/src/components/LapSchedule.tsx": {
+      "timestamp": 1777273462264.358
+    },
+    "/home/runner/work/frontyard-timer/frontyard-timer/src/components/TopBar.tsx": {
+      "timestamp": 1777273462264.358
+    },
+    "/home/runner/work/frontyard-timer/frontyard-timer/src/components/TimerDisplay.tsx": {
+      "timestamp": 1777273462264.358
+    },
+    "/home/runner/work/frontyard-timer/frontyard-timer/node_modules/scheduler/index.js": {
+      "timestamp": 1777273677341.3416
+    },
+    "/home/runner/work/frontyard-timer/frontyard-timer/node_modules/react-dom/index.js": {
+      "timestamp": 1777273677464.3408
+    },
+    "/home/runner/work/frontyard-timer/frontyard-timer/node_modules/react/jsx-runtime.js": {
+      "timestamp": 1777273677700.339
+    },
+    "/home/runner/work/frontyard-timer/frontyard-timer/node_modules/clsx/dist/clsx.mjs": {
+      "timestamp": 1777273677349.3416
+    },
+    "/home/runner/work/frontyard-timer/frontyard-timer/src/lib/race.ts": {
+      "timestamp": 1777273462264.9893
+    },
+    "/home/runner/work/frontyard-timer/frontyard-timer/src/lib/format.ts": {
+      "timestamp": 1777273462264.9893
+    },
+    "/home/runner/work/frontyard-timer/frontyard-timer/node_modules/scheduler/cjs/scheduler.production.js": {
+      "timestamp": 1777273677341.3416
+    },
+    "/home/runner/work/frontyard-timer/frontyard-timer/node_modules/react-dom/cjs/react-dom.production.js": {
+      "timestamp": 1777273677469.3408
+    },
+    "/home/runner/work/frontyard-timer/frontyard-timer/node_modules/react/cjs/react-jsx-runtime.production.js": {
+      "timestamp": 1777273677700.339
+    }
+  },
+  "deps": {
+    "/home/runner/work/frontyard-timer/frontyard-timer/src/components/LapSchedule.tsx": [
+      "/home/runner/work/frontyard-timer/frontyard-timer/src/components/LapSchedule.tsx",
+      "/home/runner/work/frontyard-timer/frontyard-timer/node_modules/clsx/dist/clsx.mjs",
+      "/home/runner/work/frontyard-timer/frontyard-timer/src/lib/format.ts",
+      "/home/runner/work/frontyard-timer/frontyard-timer/src/lib/race.ts"
+    ],
+    "/home/runner/work/frontyard-timer/frontyard-timer/src/components/StatsPanel.tsx": [
+      "/home/runner/work/frontyard-timer/frontyard-timer/src/components/StatsPanel.tsx",
+      "/home/runner/work/frontyard-timer/frontyard-timer/src/lib/race.ts"
+    ],
+    "/home/runner/work/frontyard-timer/frontyard-timer/src/components/TimerDisplay.tsx": [
+      "/home/runner/work/frontyard-timer/frontyard-timer/src/components/TimerDisplay.tsx",
+      "/home/runner/work/frontyard-timer/frontyard-timer/node_modules/clsx/dist/clsx.mjs",
+      "/home/runner/work/frontyard-timer/frontyard-timer/src/lib/format.ts",
+      "/home/runner/work/frontyard-timer/frontyard-timer/src/lib/race.ts"
+    ],
+    "/home/runner/work/frontyard-timer/frontyard-timer/src/components/TopBar.tsx": [
+      "/home/runner/work/frontyard-timer/frontyard-timer/src/components/TopBar.tsx",
+      "/home/runner/work/frontyard-timer/frontyard-timer/src/lib/format.ts"
+    ]
+  }
+}

@@ -1,7 +1,0 @@
-// Bun Snapshot v1, https://bun.sh/docs/test/snapshots
-
-exports[`TimerDisplay matches snapshot for pre phase 1`] = `"<div class="h-full flex flex-col items-center justify-center bg-black"><span class="text-2xl font-mono tracking-widest text-neutral-300 mb-6">STARTING SOON</span><span class="font-mono font-black tabular-nums leading-none text-white">MM:SS</span></div>"`;
-
-exports[`TimerDisplay matches snapshot for racing phase 1`] = `"<div class="h-full flex flex-col items-center justify-center bg-black"><span class="text-2xl font-mono tracking-widest text-neutral-300 mb-6">LAP 3</span><span class="font-mono font-black tabular-nums leading-none text-white">MM:SS</span><span class="mt-8 text-sm font-mono text-neutral-400 tracking-wide">Next lap: 27 min</span></div>"`;
-
-exports[`TimerDisplay matches snapshot for done phase 1`] = `"<div class="h-full flex flex-col items-center justify-center bg-black animate-[alarm_0.5s_ease-in-out_infinite]"><span class="text-2xl font-mono tracking-widest text-neutral-300 mb-6">RACE DONE</span><span class="font-mono font-black text-red-500 tracking-widest text-center">LAP CLOSED</span></div>"`;

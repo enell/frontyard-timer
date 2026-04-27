@@ -105,28 +105,4 @@ describe("TimerDisplay", () => {
 		);
 		expect(getByText("LAP CLOSED")).toBeInTheDocument();
 	});
-
-	it("matches snapshot for pre phase", () => {
-		const { container } = render(
-			<TimerDisplay config={config} state={preStateSoon} />,
-		);
-		// Replace the displayed countdown with a placeholder to keep snapshot stable
-		const html = container.innerHTML.replace(/\d{2}:\d{2}/g, "MM:SS");
-		expect(html).toMatchSnapshot();
-	});
-
-	it("matches snapshot for racing phase", () => {
-		const { container } = render(
-			<TimerDisplay config={config} state={racingState} />,
-		);
-		const html = container.innerHTML.replace(/\d{2}:\d{2}/g, "MM:SS");
-		expect(html).toMatchSnapshot();
-	});
-
-	it("matches snapshot for done phase", () => {
-		const { container } = render(
-			<TimerDisplay config={config} state={doneState} />,
-		);
-		expect(container.innerHTML).toMatchSnapshot();
-	});
 });
