@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+html {
+	height: 100dvh;
+	overflow: hidden;
+}
+
+body,
+#root {
+	height: 100%;
+	overflow: hidden;
+}
+
 @utility glow {
 	text-shadow:
 		0 0 12px currentColor,

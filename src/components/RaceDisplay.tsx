@@ -8,8 +8,8 @@ export function RaceDisplay() {
 	const state = useRaceState(config);
 
 	return (
-		<div className="w-screen h-screen overflow-hidden flex bg-black text-white">
-			<div className="hidden sm:block w-1/4 min-w-40 flex-shrink-0 h-full">
+		<div className="w-full h-full overflow-hidden flex bg-black text-white">
+			<div className="hidden sm:block w-1/3 lg:w-1/4 min-w-40 flex-shrink-0 h-full">
 				<LapSchedule config={config} state={state} />
 			</div>
 			<div className="flex-1 h-full">
