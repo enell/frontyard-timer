@@ -24,7 +24,7 @@ export function LapSchedule({ config, state }: LapScheduleProps) {
 	}, [currentLap]);
 
 	return (
-		<div className="h-full flex flex-col bg-black border-r border-neutral-800 overflow-hidden">
+		<div className="h-full flex flex-col bg-black landscape:border-r portrait:border-t border-neutral-800 overflow-hidden">
 			<div className="flex-1 overflow-y-auto overflow-x-hidden">
 				<table className="w-full text-xs font-mono whitespace-nowrap">
 					<thead className="sticky top-0 bg-black border-b border-neutral-800">

@@ -41,3 +41,23 @@ body,
 		background-color: rgb(255 45 45 / 0.09);
 	}
 }
+
+.timer-digits {
+	font-size: clamp(5rem, 16vw, 40rem);
+}
+
+@media (orientation: portrait) {
+	.timer-digits {
+		font-size: clamp(3rem, 20vw, 40rem);
+	}
+}
+
+.lap-closed-size {
+	font-size: clamp(3rem, 10vw, 16rem);
+}
+
+@media (orientation: portrait) {
+	.lap-closed-size {
+		font-size: clamp(2rem, 12vw, 16rem);
+	}
+}
