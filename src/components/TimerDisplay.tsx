@@ -83,19 +83,15 @@ export function TimerDisplay({ state, config }: TimerDisplayProps) {
 			</span>
 
 			{isDone ? (
-				<span
-					className="font-mono font-black text-red-500 tracking-widest text-center"
-					style={{ fontSize: "clamp(3rem, 10vw, 16rem)" }}
-				>
+				<span className="font-mono font-black text-red-500 tracking-widest text-center lap-closed-size">
 					LAP CLOSED
 				</span>
 			) : (
 				<span
 					className={clsx(
-						"font-mono font-black tabular-nums leading-none",
+						"font-mono font-black tabular-nums leading-none timer-digits",
 						colorClass,
 					)}
-					style={{ fontSize: "clamp(5rem, 16vw, 40rem)" }}
 				>
 					{digits}
 				</span>

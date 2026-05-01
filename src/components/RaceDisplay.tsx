@@ -8,11 +8,11 @@ export function RaceDisplay() {
 	const state = useRaceState(config);
 
 	return (
-		<div className="w-full h-full overflow-hidden flex bg-black text-white">
-			<div className="hidden sm:block w-1/3 lg:w-1/4 min-w-40 flex-shrink-0 h-full">
+		<div className="w-full h-full overflow-hidden flex portrait:flex-col landscape:flex-row bg-black text-white">
+			<div className="portrait:block portrait:order-2 portrait:h-1/3 portrait:flex-none landscape:hidden sm:landscape:block landscape:w-1/3 landscape:lg:w-1/4 landscape:min-w-40 landscape:flex-shrink-0 landscape:h-full">
 				<LapSchedule config={config} state={state} />
 			</div>
-			<div className="flex-1 h-full">
+			<div className="flex-1 portrait:order-1 landscape:h-full">
 				<TimerDisplay config={config} state={state} />
 			</div>
 		</div>
