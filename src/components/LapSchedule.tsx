@@ -25,9 +25,6 @@ export function LapSchedule({ config, state }: LapScheduleProps) {
 
 	return (
 		<div className="h-full flex flex-col bg-black border-r border-neutral-800 overflow-hidden">
-			<div className="px-3 py-2 border-b border-neutral-800 text-neutral-500 text-xs font-mono tracking-widest flex-shrink-0">
-				LAPS
-			</div>
 			<div className="flex-1 overflow-y-auto overflow-x-hidden">
 				<table className="w-full text-xs font-mono whitespace-nowrap">
 					<thead className="sticky top-0 bg-black border-b border-neutral-800">
