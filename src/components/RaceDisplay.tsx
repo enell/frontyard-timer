@@ -9,7 +9,7 @@ export function RaceDisplay() {
 
 	return (
 		<div className="w-screen h-screen overflow-hidden flex bg-black text-white">
-			<div className="w-1/4 h-full">
+			<div className="hidden sm:block w-1/4 min-w-40 flex-shrink-0 h-full">
 				<LapSchedule config={config} state={state} />
 			</div>
 			<div className="flex-1 h-full">
