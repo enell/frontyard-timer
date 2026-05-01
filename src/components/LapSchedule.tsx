@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 import { useEffect, useRef } from "react";
-import { formatTempo } from "../lib/format";
+import { formatTempo, formatTimestampHHMM } from "../lib/format";
 import { buildLapSchedule, maxLaps } from "../lib/race";
 import type { RaceConfig, RaceState } from "../types/race";
 
@@ -36,6 +36,9 @@ export function LapSchedule({ config, state }: LapScheduleProps) {
 								Lap
 							</th>
 							<th className="text-right px-3 py-1 text-neutral-500 font-normal">
+								Start
+							</th>
+							<th className="text-right px-3 py-1 text-neutral-500 font-normal">
 								Time
 							</th>
 							<th className="text-right px-3 py-1 text-neutral-500 font-normal">
@@ -44,7 +47,7 @@ export function LapSchedule({ config, state }: LapScheduleProps) {
 						</tr>
 					</thead>
 					<tbody>
-						{laps.map(({ lap, durationSecs }) => {
+						{laps.map(({ lap, durationSecs, startTs }) => {
 							const isNow = state.phase === "racing" && lap === currentLap;
 							const isPast =
 								(state.phase === "racing" &&
@@ -68,6 +71,14 @@ export function LapSchedule({ config, state }: LapScheduleProps) {
 										)}
 									>
 										{lap}
+									</td>
+									<td
+										className={clsx(
+											"px-3 py-1.5 text-right",
+											!isNow && "text-neutral-400",
+										)}
+									>
+										{formatTimestampHHMM(startTs)}
 									</td>
 									<td
 										className={clsx(
