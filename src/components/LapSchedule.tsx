@@ -32,16 +32,16 @@ export function LapSchedule({ config, state }: LapScheduleProps) {
 				<table className="w-full text-xs font-mono whitespace-nowrap">
 					<thead className="sticky top-0 bg-black border-b border-neutral-800">
 						<tr>
-							<th className="text-left px-3 py-1 text-neutral-500 font-normal">
+							<th className="text-left px-1.5 md:px-3 py-1 text-neutral-500 font-normal">
 								Lap
 							</th>
-							<th className="text-right px-3 py-1 text-neutral-500 font-normal">
+							<th className="text-right px-1.5 md:px-3 py-1 text-neutral-500 font-normal">
 								Start
 							</th>
-							<th className="text-right px-3 py-1 text-neutral-500 font-normal">
+							<th className="text-right px-1.5 md:px-3 py-1 text-neutral-500 font-normal">
 								Time
 							</th>
-							<th className="text-right px-3 py-1 text-neutral-500 font-normal">
+							<th className="text-right px-1.5 md:px-3 py-1 text-neutral-500 font-normal">
 								Tempo
 							</th>
 						</tr>
@@ -66,7 +66,7 @@ export function LapSchedule({ config, state }: LapScheduleProps) {
 								>
 									<td
 										className={clsx(
-											"px-3 py-1.5 font-bold",
+											"px-1.5 md:px-3 py-1.5 font-bold",
 											!isNow && "text-neutral-300",
 										)}
 									>
@@ -74,7 +74,7 @@ export function LapSchedule({ config, state }: LapScheduleProps) {
 									</td>
 									<td
 										className={clsx(
-											"px-3 py-1.5 text-right",
+											"px-1.5 md:px-3 py-1.5 text-right",
 											!isNow && "text-neutral-400",
 										)}
 									>
@@ -82,7 +82,7 @@ export function LapSchedule({ config, state }: LapScheduleProps) {
 									</td>
 									<td
 										className={clsx(
-											"px-3 py-1.5 text-right",
+											"px-1.5 md:px-3 py-1.5 text-right",
 											!isNow && "text-neutral-300",
 										)}
 									>
@@ -90,7 +90,7 @@ export function LapSchedule({ config, state }: LapScheduleProps) {
 									</td>
 									<td
 										className={clsx(
-											"px-3 py-1.5 text-right",
+											"px-1.5 md:px-3 py-1.5 text-right",
 											!isNow && "text-neutral-400",
 										)}
 									>
