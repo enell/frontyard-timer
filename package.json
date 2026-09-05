@@ -2,7 +2,7 @@
 	"name": "frontyard-ultra",
 	"private": true,
 	"version": "0.0.0",
-	"packageManager": "bun@1.3.10",
+	"packageManager": "bun@1.4.2",
 	"engines": {
 		"bun": ">=1.3.10"
 	},
